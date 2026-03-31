@@ -1,66 +1,163 @@
 
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" id="mainHtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد سیدنورانی | Financial Consultant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Mohammad Seyednourani | Financial Strategist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #1a2a6c; --gold: #fdbb2d; --accent: #b21f1f; --light: #f4f7f6; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--light); margin: 0; color: #333; line-height: 1.6; }
-        header { background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d); color: white; padding: 3rem 1rem; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        nav { background: #fff; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav a { color: var(--primary); margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 20px auto; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 5px solid var(--primary); }
-        h2 { color: var(--primary); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
-        .social-links { text-align: center; padding: 20px; }
-        .social-links a { font-size: 2rem; margin: 0 15px; color: var(--primary); transition: 0.3s; }
-        footer { background: #1a2a6c; color: white; text-align: center; padding: 20px; }
+        :root { --primary: #0f172a; --gold: #fbbf24; --accent: #3b82f6; --white: #ffffff; --glass: rgba(255, 255, 255, 0.95); }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f1f5f9; margin: 0; color: var(--primary); overflow-x: hidden; }
+        
+        /* Language Switcher */
+        .lang-switch { position: fixed; top: 20px; left: 20px; z-index: 2000; }
+        .lang-btn { background: var(--primary); color: var(--gold); border: 2px solid var(--gold); padding: 10px 25px; cursor: pointer; font-weight: 700; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .lang-btn:hover { background: var(--gold); color: var(--primary); transform: scale(1.05); }
+
+        /* Modern Header */
+        header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 120px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); position: relative; }
+        header h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: 0; font-weight: 800; }
+        header p { font-size: 1.5rem; color: var(--gold); margin-top: 15px; font-weight: 300; }
+
+        /* Floating Nav */
+        nav { background: var(--glass); backdrop-filter: blur(12px); padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        nav a { color: var(--primary); margin: 0 15px; text-decoration: none; font-weight: 600; position: relative; }
+        nav a:after { content: ''; width: 0; height: 2px; background: var(--gold); position: absolute; bottom: -5px; right: 0; transition: 0.3s; }
+        nav a:hover:after { width: 100%; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .card { background: var(--white); padding: 40px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); margin-bottom: 30px; position: relative; overflow: hidden; }
+        .card:before { content: ''; position: absolute; top: 0; right: 0; width: 5px; height: 100%; background: var(--gold); }
+
+        /* Services Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .service-card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; text-align: center; }
+        .service-card i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
+        .service-card:hover { border-color: var(--gold); transform: translateY(-10px); background: #fafafa; }
+
+        /* Contact Section */
+        .contact-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 30px; }
+        .contact-btn { display: flex; flex-direction: column; align-items: center; background: #f8fafc; padding: 25px; border-radius: 18px; text-decoration: none; color: var(--primary); border: 1px solid #e2e8f0; }
+        .contact-btn i { font-size: 2.2rem; margin-bottom: 12px; color: var(--accent); }
+        .contact-btn:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+        .contact-btn:hover i { color: var(--gold); }
+
+        /* Bi-Lingual Logic */
+        .en-mode { direction: ltr !important; }
+        .en-mode .card:before { right: auto; left: 0; }
+        [lang="en"] { display: none; }
+        .en-mode [lang="fa"] { display: none; }
+        .en-mode [lang="en"] { display: block; }
+        .en-mode .contact-btn { text-align: center; }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 50px 20px; margin-top: 80px; }
+        .address-text { font-style: normal; line-height: 1.8; color: #64748b; }
     </style>
 </head>
-<body>
+<body id="bodyTag">
+
+<div class="lang-switch">
+    <button class="lang-btn" onclick="toggleLang()">English / فارسی <i class="fas fa-language"></i></button>
+</div>
 
 <header>
-    <h1>محمد سیدنورانی</h1>
-    <div style="font-size: 1.2rem; opacity: 0.9; margin-top: 10px;">Financial Consultant & Business Analyst</div>
+    <h1 lang="fa">محمد سیدنورانی</h1>
+    <h1 lang="en">Mohammad Seyednourani</h1>
+    <p lang="fa">استراتژیست مالی و مشاور ارشد کسب‌وکار</p>
+    <p lang="en">Financial Strategist & Senior Business Consultant</p>
 </header>
 
 <nav>
-    <a href="#about">درباره من</a>
-    <a href="#services">خدمات تخصصی</a>
-    <a href="#contact">ارتباط مستقیم</a>
+    <a href="#about" lang="fa">درباره من</a><a href="#about" lang="en">About Me</a>
+    <a href="#services" lang="fa">خدمات</a><a href="#services" lang="en">Services</a>
+    <a href="#contact" lang="fa">تماس</a><a href="#contact" lang="en">Contact</a>
 </nav>
 
 <div class="container">
     <section id="about" class="card">
-        <h2>خوش آمدید</h2>
-        <p>با تجربه در تحلیل بازارهای مالی و استراتژی‌های کسب‌وکار، من به شما کمک می‌کنم تا مسیر هوشمندانه‌ای برای رشد دارایی‌های خود انتخاب کنید. امنیت و دقت، اولویت اصلی ماست.</p>
+        <h2 lang="fa"><i class="fas fa-briefcase"></i> پروفایل حرفه‌ای</h2>
+        <h2 lang="en"><i class="fas fa-briefcase"></i> Professional Profile</h2>
+        <p lang="fa">متخصص در مدیریت ثروت، تحلیل بازارهای بین‌المللی و بهینه‌سازی مالی کسب‌وکارها. مستقر در تورنتو، کانادا با رویکردی جهانی به بازارهای سرمایه.</p>
+        <p lang="en">Expert in wealth management, international market analysis, and business financial optimization. Based in Toronto, Canada, with a global approach to capital markets.</p>
     </section>
 
-    <section id="services" class="card">
-        <h2>خدمات تخصصی</h2>
-        <ul>
-            <li>مشاوره سرمایه‌گذاری و مدیریت ریسک</li>
-            <li>تحلیل جامع بازارهای مالی و بیزنس</li>
-            <li>بهینه‌سازی استراتژی‌های مالی بلندمدت</li>
-        </ul>
+    <section id="services" style="margin: 60px 0;">
+        <h2 style="text-align:center; margin-bottom:40px;" lang="fa">تخصص‌های کلیدی</h2>
+        <h2 style="text-align:center; margin-bottom:40px;" lang="en">Key Expertise</h2>
+        <div class="grid">
+            <div class="service-card">
+                <i class="fas fa-chart-pie"></i>
+                <h3 lang="fa">تحلیل استراتژیک</h3><h3 lang="en">Strategic Analysis</h3>
+                <p lang="fa">ارائه مدل‌های دقیق برای پیش‌بینی سودآوری و مدیریت ریسک.</p>
+                <p lang="en">Providing accurate models for profitability forecasting and risk management.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-landmark"></i>
+                <h3 lang="fa">مشاوره مالیاتی</h3><h3 lang="en">Tax Consulting</h3>
+                <p lang="fa">بهینه‌سازی ساختارهای مالی برای انطباق با قوانین بین‌المللی.</p>
+                <p lang="en">Optimizing financial structures for international compliance.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="card" style="text-align: center;">
-        <h2>پل‌های ارتباطی</h2>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+    <section id="contact" class="card">
+        <h2 lang="fa"><i class="fas fa-address-book"></i> اطلاعات تماس و موقعیت</h2>
+        <h2 lang="en"><i class="fas fa-address-book"></i> Contact & Location</h2>
+        
+        <div class="address-text">
+            <p lang="fa"><i class="fas fa-map-marker-alt"></i> <strong>آدرس دفتر:</strong> تورنتو، ریچموند هیل، خیابان بالف، پلاک ۱۵</p>
+            <p lang="en"><i class="fas fa-map-marker-alt"></i> <strong>Office:</strong> 15 Balf St, Richmond Hill, ON, Canada</p>
+        </div>
+
+        <div class="contact-box">
+            <a href="tel:+14169490179" class="contact-btn">
+                <i class="fas fa-phone-alt"></i>
+                <span lang="fa">تماس مستقیم</span><span lang="en">Direct Call</span>
+                <small dir="ltr">+1 (416) 949-0179</small>
+            </a>
+            <a href="mailto:amirsn121@gmail.com" class="contact-btn">
+                <i class="fas fa-envelope-open-text"></i>
+                <span lang="fa">ارسال ایمیل</span><span lang="en">Email Me</span>
+                <small dir="ltr">amirsn121@gmail.com</small>
+            </a>
+            <a href="https://wa.me/14169490179" target="_blank" class="contact-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span lang="fa">واتس‌اپ</span><span lang="en">WhatsApp</span>
+                <small lang="fa">گفتگوی فوری</small><small lang="en">Instant Chat</small>
+            </a>
+            <a href="https://www.google.com/maps/search/15+Balf+St,+Richmond+Hill,+ON" target="_blank" class="contact-btn">
+                <i class="fas fa-map-marked-alt"></i>
+                <span lang="fa">مشاهده نقشه</span><span lang="en">View on Map</span>
+                <small>Richmond Hill</small>
+            </a>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>© ۲۰۲۶ - پورتفولیو حرفه‌ای محمد سیدنورانی</p>
+    <div style="margin-bottom: 20px;">
+        <i class="fab fa-linkedin fa-2x" style="margin: 0 15px; cursor:pointer;"></i>
+        <i class="fab fa-instagram fa-2x" style="margin: 0 15px; cursor:pointer;"></i>
+    </div>
+    <p lang="fa">© ۲۰۲۶ - تمام حقوق برای پورتفولیو رسمی محمد سیدنورانی محفوظ است</p>
+    <p lang="en">© 2026 - Official Portfolio of Mohammad Seyednourani. All Rights Reserved.</p>
 </footer>
+
+<script>
+    function toggleLang() {
+        const body = document.getElementById('bodyTag');
+        const html = document.getElementById('mainHtml');
+        if (html.dir === 'rtl') {
+            html.dir = 'ltr';
+            body.classList.add('en-mode');
+        } else {
+            html.dir = 'rtl';
+            body.classList.remove('en-mode');
+        }
+    }
+</script>
 
 </body>
 </html>
