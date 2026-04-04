@@ -6,100 +6,159 @@
     <title>Mohammad Seyednourani | Strategic Legacy Architect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700&display=swap');
-        :root { --navy: #0a192f; --gold: #c5a059; --glass: rgba(10, 25, 47, 0.85); }
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;700&display=swap');
+        :root { --gold: #c5a059; --navy: #060d1a; --gold-glow: rgba(197, 160, 89, 0.4); }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Vazirmatn', sans-serif; background-color: var(--navy); color: #ccd6f6; line-height: 1.7; overflow-x: hidden; }
+        body { font-family: 'Vazirmatn', sans-serif; background: var(--navy); color: #e6f1ff; overflow-x: hidden; }
 
-        header { position: fixed; top: 0; width: 100%; padding: 20px 5%; background: rgba(10,25,47,0.95); display: flex; justify-content: space-between; z-index: 1000; border-bottom: 1px solid var(--gold); }
+        /* هدر استراتژیک */
+        header { position: fixed; top: 0; width: 100%; padding: 25px 8%; background: rgba(6, 13, 26, 0.8); backdrop-filter: blur(15px); display: flex; justify-content: space-between; z-index: 1000; border-bottom: 1px solid var(--gold-glow); }
+        .logo { font-weight: 700; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; font-size: 1.1rem; }
         
-        section { min-height: 100vh; display: flex; align-items: center; padding: 80px 10%; position: relative; border-bottom: 1px solid rgba(197,160,89,0.1); background-size: cover; background-position: center; background-repeat: no-repeat; }
+        /* بخش‌های ۷ صفحه با افکت پارالاکس نرم */
+        section { height: 100vh; width: 100%; display: flex; align-items: center; position: relative; background-size: cover; background-position: center; background-attachment: fixed; }
         
-        .glass-box { background: var(--glass); padding: 40px; border-right: 5px solid var(--gold); max-width: 600px; backdrop-filter: blur(10px); z-index: 5; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s all ease-out; }
-        .active { opacity: 1; transform: translateY(0); }
+        /* لایه تاریک‌کننده هوشمند برای خوانایی متن خود عکس */
+        section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(6,13,26,0.9) 20%, transparent 80%); z-index: 1; }
         
-        .btn-call { background: var(--gold); color: var(--navy); padding: 15px 35px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .btn-call:hover { box-shadow: 0 0 20px var(--gold); transform: translateY(-3px); }
+        .content { position: relative; z-index: 10; padding: 0 10%; max-width: 800px; opacity: 0; transform: translateY(30px); transition: 1.5s all ease; }
+        .active .content { opacity: 1; transform: translateY(0); }
 
-        /* استایل اختصاصی ۷ صفحه با عکس‌های شما */
-        #page1 { background-image: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)), url('hero-me.jpg'); background-position: top center; }
-        #page2 { background-image: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)), url('wisdom.jpg'); justify-content: flex-end; }
-        #page3 { background-image: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)), url('protection.jpg'); }
-        #page4 { background-image: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('future.jpg'); justify-content: center; text-align: center; }
-        #page5 { background: #112240; justify-content: center; text-align: center; }
-        #page6 { background-image: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)), url('legacy.jpg'); justify-content: flex-end; }
-        #page7 { background-image: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('contact-bg.jpg'); justify-content: center; text-align: center; }
+        h2 { color: var(--gold); font-size: 3rem; margin-bottom: 20px; font-weight: 700; text-shadow: 0 0 15px var(--gold-glow); }
+        p { font-size: 1.3rem; font-weight: 100; line-height: 2; color: #ccd6f6; margin-bottom: 30px; }
+
+        /* دکمه‌های طلایی متحرک */
+        .cta-button { 
+            position: relative; display: inline-block; padding: 18px 45px; color: var(--gold); 
+            text-decoration: none; border: 1px solid var(--gold); font-weight: bold; overflow: hidden;
+            transition: 0.5s; z-index: 1; letter-spacing: 1px;
+        }
+        .cta-button::before { 
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; 
+            background: var(--gold); transition: 0.5s; z-index: -1; 
+        }
+        .cta-button:hover { color: var(--navy); box-shadow: 0 0 30px var(--gold-glow); }
+        .cta-button:hover::before { left: 0; }
+
+        /* تنظیمات پس‌زمینه صفحات (دقیقاً طبق فایل‌های شما) */
+        #p1 { background-image: url('hero-me.jpg'); }
+        #p2 { background-image: url('wisdom.jpg'); }
+        #p3 { background-image: url('protection.jpg'); }
+        #p4 { background-image: url('future.jpg'); }
+        #p5 { background: #0a192f; } /* بخش شبکه */
+        #p6 { background-image: url('legacy.jpg'); }
+        #p7 { background-image: url('contact-bg.jpg'); }
+
+        /* استایل شبکه بیزنسی (اکوسیستم) */
+        .network-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; width: 100%; }
+        .hub-card { padding: 35px 20px; border: 1px solid rgba(197,160,89,0.2); background: rgba(17,34,64,0.4); backdrop-filter: blur(5px); text-align: center; text-decoration: none; transition: 0.4s; }
+        .hub-card:hover { border-color: var(--gold); background: rgba(197,160,89,0.1); transform: translateY(-10px); }
+        .hub-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; display: block; }
+        .hub-card span { font-size: 0.9rem; color: #8892b0; text-transform: uppercase; }
+
+        body.en { direction: ltr; }
+        body.en section::before { background: linear-gradient(to left, rgba(6,13,26,0.9) 20%, transparent 80%); }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="font-weight: 700; color: var(--gold);">M. SEYEDNOURANI</div>
-        <div style="color: var(--gold); font-size: 0.8rem; border: 1px solid; padding: 2px 10px;">STRATEGIC ADVISOR</div>
+        <div class="logo">M. Seyednourani</div>
+        <button onclick="toggleLang()" style="background:transparent; border:1px solid var(--gold); color:var(--gold); padding:5px 15px; cursor:pointer; font-weight:bold;">EN / فارسی</button>
     </header>
 
-    <section id="page1">
-        <div class="glass-box reveal active">
-            <h1 style="color: var(--gold); font-size: 3rem; margin-bottom: 10px;">محمد سیدنورانی</h1>
-            <p>چهار دهه استراتژی هوشمندانه. معمار جهان‌های مالی و میراث ماندگار.</p>
-            <a href="tel:+98912XXXXXXX" class="btn-call">شروع گفتگو | START NOW</a>
+    <section id="p1">
+        <div class="content">
+            <h2 id="t1">مهندسی هوشمندانه ثروت</h2>
+            <p id="d1">چهار دهه حضور در سطوح اول بیزنس بین‌الملل، نه یک رزومه، که ضمانت امنیت دارایی شماست.</p>
+            <a href="https://wa.me/98912XXXXXXX" class="cta-button" id="b1">شروع مسیر طلایی</a>
         </div>
     </section>
 
-    <section id="page2">
-        <div class="glass-box reveal">
-            <h2 style="color: var(--gold); font-size: 2rem;">وسعت و عمق تجربه</h2>
-            <p>زمان بازگشت‌ناپذیر است. ۴۰ سال تخصص ما در بازارهای بین‌المللی، میان‌بری برای امنیت سرمایه شماست.</p>
+    <section id="p2">
+        <div class="content">
+            <h2 id="t2">هنرِ عبور از تلاطم</h2>
+            <p id="d2">در دنیای مالی، اشتباهات قیمت ندارند. ما از ۴۰ سال «حکمت مالی» برای محافظت از زمان شما استفاده می‌کنیم.</p>
+            <a href="#p3" class="cta-button" id="b2">استراتژی حفاظتی</a>
         </div>
     </section>
 
-    <section id="page3">
-        <div class="glass-box reveal">
-            <h2 style="color: var(--gold); font-size: 2rem;">Asset Protection</h2>
-            <p>حفاظت هوشمندانه، هنرِ ساختن قلعه‌ای نفوذناپذیر برای دارایی‌ها در برابر ریسک‌های سیاسی و اقتصادی جهان است.</p>
+    <section id="p3">
+        <div class="content">
+            <h2 id="t3">Asset Protection</h2>
+            <p id="d3">حفاظت از دارایی، ساختن یک قلعه است. معماری استراتژیک ما، سرمایه شما را در برابر ریسک‌های سیاسی جهان رویین‌تن می‌کند.</p>
+            <a href="tel:+98912XXXXXXX" class="cta-button" id="b3">تماس محرمانه</a>
         </div>
     </section>
 
-    <section id="page4">
-        <div class="reveal">
-            <h2 style="font-size: 2.5rem; color: var(--gold);">نگاه به افق‌های دوردست</h2>
-            <p style="max-width: 700px; margin: auto;">ما برای ثباتی برنامه‌ریزی می‌کنیم که نسل‌های بعد از شما نیز از آن بهره‌مند شوند.</p>
+    <section id="p4">
+        <div class="content">
+            <h2 id="t4">نگاه به افق‌های دوردست</h2>
+            <p id="d4">ما جایی را می‌بینیم که دیگران نمی‌بینند. استراتژی پایدار، ثروت شما را برای نسل‌های بعد به میراث تبدیل می‌کند.</p>
         </div>
     </section>
 
-    <section id="page5">
-        <div class="reveal">
-            <h2 style="color: var(--gold);">یکپارچگی و شبکه جهانی</h2>
-            <div style="display: flex; justify-content: center; gap: 40px; margin: 30px 0; font-size: 3.5rem; color: var(--gold);">
-                <i class="fab fa-whatsapp"></i><i class="fab fa-linkedin"></i><i class="fab fa-instagram"></i>
+    <section id="p5" style="background-attachment: scroll;">
+        <div class="content" style="max-width: 1000px;">
+            <h2 id="t5">شبکه بیزنسی و درگاه‌های امن</h2>
+            <div class="network-hub">
+                <a href="https://wa.me/98912XXXXXXX" class="hub-card"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+                <a href="mailto:info@seyednourani.com" class="hub-card"><i class="far fa-envelope"></i><span>Email Hub</span></a>
+                <a href="#" class="hub-card"><i class="fab fa-linkedin-in"></i><span>Global Network</span></a>
+                <a href="tel:+98912XXXXXXX" class="hub-card"><i class="fas fa-headset"></i><span>Direct Line</span></a>
             </div>
-            <p>اتصال مستقیم به درگاه‌های امن مالی و شبکه‌های بیزنسی بین‌المللی.</p>
         </div>
     </section>
 
-    <section id="page6">
-        <div class="glass-box reveal">
-            <h2 style="color: var(--gold); font-size: 2rem;">جریان زندگی و بازنشستگی</h2>
-            <p>برای هزینه‌های پیش‌بینی نشده و آرامش دوران بازنشستگی چه برنامه‌ای دارید؟ ما با تحلیل دقیق، امنیتِ «آینده‌ی شما» را امروز طراحی می‌کنیم.</p>
+    <section id="p6">
+        <div class="content">
+            <h2 id="t6">جریان زندگی تا ۵۰ سال آینده</h2>
+            <p id="d6">مشاوره ما فقط درباره عدد نیست؛ درباره آرامش دوران بازنشستگی و پوشش‌های بیمه‌ای است که آینده را پیش‌بینی‌پذیر می‌کند.</p>
+            <a href="#p7" class="cta-button" id="b6">طراحی نقشه راه</a>
         </div>
     </section>
 
-    <section id="page7">
-        <div class="reveal" style="max-width: 800px;">
-            <h2 style="font-size: 2.5rem; color: var(--gold);">وصیت‌نامه؛ آخرین امضای اقتدار</h2>
-            <p style="margin-bottom: 30px;">مدیریت میراث، تضمین تداوم نام و ثروت شماست. اجازه ندهید دسترنج یک عمر تلاش، هدر رود.</p>
-            <div style="border: 1px dashed var(--gold); padding: 30px;">
-                <a href="mailto:info@seyednourani.com" class="btn-call">START YOUR LEGACY JOURNEY</a>
-            </div>
+    <section id="p7">
+        <div class="content">
+            <h2 id="t7">آخرین امضای اقتدار</h2>
+            <p id="d7">اجازه ندهید دسترنج یک عمر تلاش، در پیچ و خم‌های قانونی هدر رود. مدیریت وصیت‌نامه، هوشمندانه‌ترین حرکت یک لیدر است.</p>
+            <a href="mailto:info@seyednourani.com" class="cta-button" id="b7">تثبیت میراث ماندگار</a>
         </div>
     </section>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // دوزبانه استراتژیک
+        let isEn = false;
+        const lang = {
+            fa: {
+                t1: "مهندسی هوشمندانه ثروت", d1: "چهار دهه حضور در سطوح اول بیزنس بین‌الملل، ضمانت امنیت دارایی شماست.", b1: "شروع مسیر طلایی",
+                t2: "هنرِ عبور از تلاطم", d2: "در دنیای مالی، اشتباهات قیمت ندارند. ما از ۴۰ سال حکمت برای محافظت از زمان شما استفاده می‌کنیم.",
+                t3: "Asset Protection", d3: "معماری استراتژیک ما، سرمایه شما را در برابر ریسک‌های جهانی رویین‌تن می‌کند.",
+                t5: "اکوسیستم جهانی", t6: "آرامش در افق ۵۰ ساله", t7: "آخرین امضای اقتدار"
+            },
+            en: {
+                t1: "Strategic Wealth Architecture", d1: "Four decades at the pinnacle of global business - your asset security guaranteed.", b1: "START JOURNEY",
+                t2: "The Wisdom of Experience", d2: "In finance, mistakes are priceless. We leverage 40 years of wisdom to protect your time.",
+                t3: "Asset Protection", d3: "Our strategic architecture makes your capital invincible against global risks.",
+                t5: "Global Ecosystem", t6: "The 50-Year Horizon", t7: "The Final Signature of Power"
+            }
+        };
+
+        function toggleLang() {
+            isEn = !isEn;
+            document.body.classList.toggle('en', isEn);
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+            for(let key in lang[isEn?'en':'fa']) {
+                if(document.getElementById(key)) document.getElementById(key).innerText = lang[isEn?'en':'fa'][key];
+            }
+        }
+
+        // انیمیشن ظهور نرم
+        const obs = new IntersectionObserver((es) => {
+            es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, {threshold: 0.3});
+        document.querySelectorAll('section').forEach(s => obs.observe(s));
     </script>
 </body>
 </html>
