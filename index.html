@@ -11,23 +11,23 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Vazirmatn', sans-serif; background-color: var(--navy); color: var(--text); line-height: 1.8; overflow-x: hidden; }
 
-        section { min-height: 100vh; display: flex; align-items: center; padding: 80px 10%; border-bottom: 1px solid rgba(197,160,89,0.1); position: relative; }
+        section { min-height: 100vh; display: flex; align-items: center; padding: 80px 10%; border-bottom: 1px solid rgba(197,160,89,0.1); position: relative; background-size: cover; background-position: center; background-repeat: no-repeat; }
         .reveal { opacity: 0; transform: translateY(50px); transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
         .active { opacity: 1; transform: translateY(0); }
         
-        .glass-box { background: var(--glass); padding: 45px; border-right: 5px solid var(--gold); max-width: 650px; backdrop-filter: blur(10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .glass-box { background: var(--glass); padding: 45px; border-right: 5px solid var(--gold); max-width: 650px; backdrop-filter: blur(10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); z-index: 2; }
         header { position: fixed; top: 0; width: 100%; padding: 20px 5%; background: rgba(10,25,47,0.95); backdrop-filter: blur(8px); display: flex; justify-content: space-between; z-index: 1000; border-bottom: 1px solid var(--gold); }
-        .btn-call { background: var(--gold); color: var(--navy); padding: 15px 40px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; margin-top: 25px; transition: 0.4s; cursor: pointer; border: none; }
+        .btn-call { background: var(--gold); color: var(--navy); padding: 15px 40px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; margin-top: 25px; transition: 0.4s; cursor: pointer; border: none; z-index: 3; }
         .btn-call:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
 
-        /* پس‌زمینه‌های ۷ صفحه */
-        #p1 { background: linear-gradient(90deg, var(--navy) 45%, transparent), url('hero-me.jpg'); background-size: cover; background-position: center right; }
-        #p2 { background: linear-gradient(270deg, var(--navy) 45%, transparent), url('wisdom.jpg'); background-size: cover; background-position: center left; justify-content: flex-end; }
-        #p3 { background: linear-gradient(90deg, var(--navy) 45%, transparent), url('protection.jpg'); background-size: cover; background-position: center right; }
-        #p4 { background: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('future.jpg'); background-size: cover; background-position: center; justify-content: center; text-align: center; }
+        /* تراز کردن پس‌زمینه صفحات */
+        #p1 { background-image: linear-gradient(90deg, var(--navy) 40%, transparent), url('hero-me.jpg'); background-position: center right; }
+        #p2 { background-image: linear-gradient(270deg, var(--navy) 40%, transparent), url('wisdom.jpg'); background-position: center left; justify-content: flex-end; }
+        #p3 { background-image: linear-gradient(90deg, var(--navy) 40%, transparent), url('protection.jpg'); background-position: center right; }
+        #p4 { background-image: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('future.jpg'); justify-content: center; text-align: center; }
         #p5 { background: #112240; justify-content: center; text-align: center; }
-        #p6 { background: linear-gradient(270deg, var(--navy) 50%, transparent), url('legacy.jpg'); background-size: cover; background-position: center left; justify-content: flex-end; }
-        #p7 { background: linear-gradient(rgba(10,25,47,0.9), rgba(10,25,47,0.9)), url('contact-bg.jpg'); background-size: cover; background-position: center; justify-content: center; text-align: center; }
+        #p6 { background-image: linear-gradient(270deg, var(--navy) 50%, transparent), url('legacy.jpg'); background-position: center left; justify-content: flex-end; }
+        #p7 { background-image: linear-gradient(rgba(10,25,47,0.9), rgba(10,25,47,0.9)), url('contact-bg.jpg'); justify-content: center; text-align: center; }
     </style>
 </head>
 <body>
