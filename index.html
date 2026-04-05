@@ -3,106 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Seyednourani | Strategic Wealth Architect</title>
+    <title>M. Seyednourani | Strategic Advisor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700&display=swap');
-        :root { --navy: #060d1a; --gold: #c5a059; --text: #ccd6f6; }
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Vazirmatn', sans-serif; background: var(--navy); color: var(--text); line-height: 1.8; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #060d1a; overflow-x: hidden; }
 
-        header { position: fixed; top: 0; width: 100%; padding: 20px 8%; background: rgba(6,13,26,0.95); display: flex; justify-content: space-between; z-index: 1000; border-bottom: 1px solid rgba(197,160,89,0.3); }
-        .logo { font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 1.1rem; }
+        header { 
+            position: fixed; top: 0; width: 100%; padding: 20px 5%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
+        }
+        .logo { color: #c5a059; font-weight: bold; letter-spacing: 2px; }
 
-        section { height: 100vh; width: 100%; display: flex; align-items: center; padding: 100px 10%; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat; }
-        section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6,13,26,0.5); z-index: 1; }
+        /* بخش‌های ۷ صفحه - فقط نمایش عکس‌های حرفه‌ای شما */
+        section { 
+            height: 100vh; width: 100%; position: relative; 
+            background-size: cover; background-position: center; 
+            display: flex; align-items: flex-end; padding: 60px 10%; 
+            border-bottom: 1px solid rgba(197,160,89,0.1);
+        }
 
-        .content { position: relative; z-index: 10; max-width: 650px; opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-        .active .content { opacity: 1; transform: translateY(0); }
+        /* دکمه‌های شیشه‌ای که روی متن عکس نمی‌افتند */
+        .btn-action { 
+            background: rgba(197, 160, 89, 0.1); color: #c5a059; 
+            padding: 12px 35px; text-decoration: none; border: 1px solid #c5a059; 
+            font-weight: bold; backdrop-filter: blur(10px); transition: 0.3s;
+        }
+        .btn-action:hover { background: #c5a059; color: #060d1a; }
 
-        h2 { color: var(--gold); font-size: 3.5rem; margin-bottom: 20px; font-weight: 700; }
-        p { font-size: 1.4rem; font-weight: 100; color: #ccd6f6; margin-bottom: 30px; }
+        /* فراخوانی مستقیم و دقیق عکس‌ها بر اساس فایل‌های شما */
+        #p1 { background-image: url('hero-me.jpg'); }
+        #p2 { background-image: url('wisdom.jpg'); }
+        #p3 { background-image: url('protection.jpg'); }
+        #p4 { background-image: url('future.jpg'); }
+        #p5 { background: #0a192f; align-items: center; justify-content: center; } /* بخش شبکه */
+        #p6 { background-image: url('legacy.jpg'); }
+        #p7 { background-image: url('contact-bg.jpg'); justify-content: center; }
 
-        .btn-call { background: var(--gold); color: var(--navy); padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; margin-top: 25px; transition: 0.3s; }
-        .btn-call:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197,160,89,0.4); }
-
-        .net-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; width: 100%; max-width: 900px; }
-        .net-item { padding: 30px; border: 1px solid rgba(197,160,89,0.2); background: rgba(17,34,64,0.4); text-align: center; text-decoration: none; color: white; transition: 0.3s; }
-        .net-item:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .net-item i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; display: block; }
+        .net-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px; width: 100%; max-width: 800px; text-align: center; }
+        .net-item { color: #c5a059; text-decoration: none; border: 1px solid rgba(197,160,89,0.3); padding: 25px; transition: 0.3s; }
+        .net-item i { font-size: 2.5rem; display: block; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">M. Seyednourani</div>
-        <button onclick="document.body.classList.toggle('en')" style="background:transparent; border:1px solid var(--gold); color:var(--gold); padding:2px 10px; cursor:pointer; font-weight: bold;">EN / FA</button>
+        <div class="logo">M. SEYEDNOURANI</div>
+        <div style="color:#c5a059; cursor:pointer; font-size:0.8rem; border:1px solid; padding:2px 8px;">FA/EN</div>
     </header>
 
-    <section id="p1" style="background-image: url('hero-me.jpg'); background-position: center right;">
-        <div class="content">
-            <h2>مهندسی هوشمندانه ثروت</h2>
-            <p>چهار دهه حضور در سطوح اول بیزنس بین‌الملل، نه یک رزومه، که ضمانت امنیت دارایی شماست.</p>
-            <a href="https://wa.me/98912XXXXXXX" class="btn-call">شروع مسیر طلایی</a>
+    <section id="p1"><a href="https://wa.me/98912XXXXXXX" class="btn-action">START STRATEGY</a></section>
+    <section id="p2"></section>
+    <section id="p3"></section>
+    <section id="p4"></section>
+    
+    <section id="p5">
+        <div class="net-grid">
+            <a href="https://wa.me/98912XXXXXXX" class="net-item"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+            <a href="tel:+98912XXXXXXX" class="net-item"><i class="fas fa-phone"></i>Direct Call</a>
+            <a href="mailto:info@seyednourani.com" class="net-item"><i class="far fa-envelope"></i>Email</a>
         </div>
     </section>
 
-    <section id="p2" style="background-image: url('wisdom.jpg'); background-position: center left; justify-content: flex-end;">
-        <div class="content">
-            <h2>هنر عبور از بحران</h2>
-            <p>۴۰ سال حکمت مالی برای حفاظت از زمان و سرمایه شما در تلاطم‌های جهانی.</p>
-            <a href="#p3" class="btn-call">استراتژی حفاظتی</a>
-        </div>
-    </section>
+    <section id="p6"></section>
+    <section id="p7"><a href="mailto:info@seyednourani.com" class="btn-action">START LEGACY</a></section>
 
-    <section id="p3" style="background-image: url('protection.jpg');">
-        <div class="content">
-            <h2>Asset Protection</h2>
-            <p>معماری استراتژیک ما، سرمایه شما را در برابر ریسک‌های سیاسی جهان رویین‌تن می‌کند.</p>
-        </div>
-    </section>
-
-    <section id="p4" style="background-image: url('future.jpg'); justify-content: center; text-align: center;">
-        <div class="content" style="max-width: 800px;">
-            <h2 style="font-size: 3rem;">نگاه به افق‌های دوردست</h2>
-            <p style="font-size: 1.3rem;">استراتژی پایدار، ثروت شما را برای نسل‌های بعد به میراث تبدیل می‌کند.</p>
-        </div>
-    </section>
-
-    <section id="p5" style="background: #0a192f; justify-content: center; text-align: center;">
-        <div class="content" style="max-width: 1000px;">
-            <h2 style="color: var(--gold); margin-bottom: 40px;">شبکه جهانی و درگاه‌های امن</h2>
-            <div class="net-grid">
-                <a href="https://wa.me/98912XXXXXXX" class="net-item"><i class="fab fa-whatsapp"></i>واتس‌اپ</a>
-                <a href="mailto:info@seyednourani.com" class="net-item"><i class="far fa-envelope"></i>ایمیل</a>
-                <a href="tel:+98912XXXXXXX" class="net-item"><i class="fas fa-phone"></i>تماس</a>
-                <a href="#" class="net-item"><i class="fab fa-linkedin"></i>لینکدین</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="p6" style="background-image: url('legacy.jpg'); background-position: center left; justify-content: flex-end;">
-        <div class="content">
-            <h2>آرامش در افق ۵۰ ساله</h2>
-            <p>شبیه‌سازی مسیر مالی و پوشش‌های بیمه‌ای استراتژیک برای دوران بازنشستگی.</p>
-        </div>
-    </section>
-
-    <section id="p7" style="background-image: url('contact-bg.jpg'); justify-content: center; text-align: center;">
-        <div class="content" style="max-width: 850px;">
-            <h2 style="font-size: 3rem;">آخرین امضای اقتدار</h2>
-            <p style="font-size: 1.4rem;">مدیریت وصیت‌نامه و تداوم میراث ماندگار شما. اجازه ندهید دسترنج یک عمر تلاش هدر رود.</p>
-            <div style="background: rgba(197,160,89,0.1); padding: 30px; border: 1px dashed var(--gold); display: inline-block;">
-                <a href="mailto:info@seyednourani.com" class="btn-call">START LEGACY</a>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        const obs = new IntersectionObserver((es) => {
-            es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('section').forEach(s => obs.observe(s));
-    </script>
 </body>
 </html>
