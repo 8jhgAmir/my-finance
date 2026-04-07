@@ -1,125 +1,92 @@
 
-<!DOCTYPE html>
+
+     <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M. Seyednourani | Strategic Legacy Architect</title>
+    <title>M. Seyednourani | Strategic Legacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&display=swap');
-        :root { --gold: #c5a059; --navy: #060d1a; --glass: rgba(255, 255, 255, 0.05); }
+        :root { --gold: #c5a059; --navy: #060d1a; }
         
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Vazirmatn', sans-serif; background: var(--navy); color: white; overflow-x: hidden; }
 
-        header { 
-            position: fixed; top: 0; width: 100%; padding: 25px 8%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; background: rgba(6, 13, 26, 0.5); backdrop-filter: blur(15px);
-        }
-        .logo { color: var(--gold); font-weight: 700; letter-spacing: 3px; font-size: 1.1rem; }
+        header { position: fixed; top: 0; width: 100%; padding: 25px 8%; display: flex; justify-content: space-between; z-index: 1000; background: rgba(6, 13, 26, 0.5); backdrop-filter: blur(15px); }
+        .logo { color: var(--gold); font-weight: 700; letter-spacing: 3px; }
 
-        section { 
-            height: 100vh; width: 100%; position: relative; 
-            background-size: cover; background-position: center; 
-            background-attachment: fixed; /* افکت پارالاکس */
-            display: flex; align-items: center; justify-content: center;
-        }
-        section::after { 
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(rgba(6,13,26,0.2), rgba(6,13,26,0.7)); 
-        }
+        section { height: 100vh; width: 100%; position: relative; background-size: cover; background-position: center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; }
+        section::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(6,13,26,0.3), rgba(6,13,26,0.8)); }
 
-        .v-content { position: relative; z-index: 10; text-align: center; opacity: 0; transform: translateY(50px); transition: 1.5s all ease; }
+        .v-content { position: relative; z-index: 10; text-align: center; opacity: 0; transform: translateY(50px); transition: 1.5s all ease; padding: 20px; }
         .active .v-content { opacity: 1; transform: translateY(0); }
 
-        .btn-gold { 
-            display: inline-block; padding: 18px 55px; background: rgba(197, 160, 89, 0.1); 
-            color: var(--gold); border: 2px solid var(--gold); font-weight: 700; 
-            text-decoration: none; transition: 0.5s; font-size: 1.1rem;
-            backdrop-filter: blur(10px); letter-spacing: 2px;
-        }
-        .btn-gold:hover { 
-            background: var(--gold); color: var(--navy); 
-            box-shadow: 0 0 40px rgba(197, 160, 89, 0.6); transform: scale(1.05);
-        }
+        .btn-gold { display: inline-block; padding: 18px 55px; border: 2px solid var(--gold); color: var(--gold); text-decoration: none; font-weight: 700; transition: 0.5s; backdrop-filter: blur(10px); }
+        .btn-gold:hover { background: var(--gold); color: var(--navy); box-shadow: 0 0 40px rgba(197, 160, 89, 0.5); }
 
-        /* فراخوانی عکس‌های سالم شما */
+        /* بک‌گراندها */
         #p1 { background-image: url('hero-me.jpg'); }
         #p2 { background-image: url('wisdom.jpg'); }
         #p3 { background-image: url('protection.jpg'); }
         #p4 { background-image: url('future.jpg'); }
         #p5 { background: #040a15; flex-direction: column; background-attachment: scroll; }
-        #p6 { background-image: url('legacy.jpg'); }
+        #p6 { background-image: url('legacy.jpg'); } /* عکس صفحه ششم شما */
         #p7 { background-image: url('contact-bg.jpg'); }
 
-        .grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; width: 90%; max-width: 1000px; margin-top: 40px; }
-        .card-hub { 
-            background: var(--glass); border: 1px solid rgba(197, 160, 89, 0.1); 
-            padding: 45px 20px; text-decoration: none; color: white; transition: 0.4s;
-            backdrop-filter: blur(15px); display: flex; flex-direction: column; align-items: center;
+        /* استایل خاص برای محتوای صفحه ششم */
+        .legacy-text {
+            background: rgba(255, 255, 255, 0.03);
+            border-right: 4px solid var(--gold);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
         }
-        .card-hub:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.05); transform: translateY(-15px); }
-        .card-hub i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; transition: 0.6s ease; }
-        .card-hub:hover i { transform: rotateY(360deg); }
+
+        .grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; width: 90%; max-width: 1000px; margin-top: 40px; }
+        .card-hub { background: rgba(255,255,255,0.05); border: 1px solid rgba(197,160,89,0.1); padding: 40px; text-decoration: none; color: white; text-align: center; transition: 0.4s; }
+        .card-hub:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card-hub i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">M. SEYEDNOURANI</div>
-    </header>
+    <header><div class="logo">M. SEYEDNOURANI</div></header>
 
-    <section id="p1">
-        <div class="v-content">
-            <a href="#p2" class="btn-gold">ENTER STRATEGY | شروع استراتژی</a>
-        </div>
-    </section>
-
+    <section id="p1"><div class="v-content"><a href="#p2" class="btn-gold">ENTER STRATEGY</a></div></section>
     <section id="p2"></section>
     <section id="p3"></section>
     <section id="p4"></section>
 
     <section id="p5">
-        <div class="v-content" style="opacity: 1; transform: none; display: flex; flex-direction: column; align-items: center;">
-            <h1 style="color: var(--gold); font-size: 2.2rem; margin-bottom: 10px;">GLOBAL BUSINESS HUB</h1>
-            <p style="color: #8892b0; font-style: italic; max-width: 700px; margin: 0 auto 40px auto; line-height: 1.8; text-align: center;">
-                "ثروت، محصولِ قدرتِ تفکر و دقتِ استراتژی است؛ نه صرفاً تلاشِ فیزیکی."
-            </p>
+        <div class="v-content" style="opacity: 1; transform: none;">
+            <p style="color: var(--gold); font-style: italic; margin-bottom: 40px; line-height: 1.8;">"ثروت، محصولِ قدرتِ تفکر و دقتِ استراتژی است؛ نه صرفاً تلاشِ فیزیکی."</p>
             <div class="grid-hub">
-                <a href="https://wa.me/14169490179" class="card-hub">
-                    <i class="fab fa-whatsapp"></i>
-                    <strong>WhatsApp</strong>
-                    <small style="margin-top:10px; color:#5d6880;">+1 416 949 0179</small>
-                </a>
-                <a href="tel:+14169490179" class="card-hub">
-                    <i class="fas fa-phone-alt"></i>
-                    <strong>Direct Call</strong>
-                    <small style="margin-top:10px; color:#5d6880;">ارتباط مستقیم</small>
-                </a>
-                <a href="mailto:amirsn121@gmail.com" class="card-hub">
-                    <i class="far fa-envelope"></i>
-                    <strong>Email Hub</strong>
-                    <small style="margin-top:10px; color:#5d6880;">amirsn121@gmail.com</small>
-                </a>
+                <a href="https://wa.me/14169490179" class="card-hub"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+                <a href="tel:+14169490179" class="card-hub"><i class="fas fa-phone"></i>Call</a>
+                <a href="mailto:amirsn121@gmail.com" class="card-hub"><i class="far fa-envelope"></i>Email</a>
             </div>
         </div>
     </section>
 
-    <section id="p6"></section>
-
-    <section id="p7">
+    <section id="p6">
         <div class="v-content">
-            <a href="mailto:amirsn121@gmail.com" class="btn-gold">START YOUR LEGACY | ثبت میراث</a>
+            <div class="legacy-text">
+                <h2 style="color: var(--gold); font-size: 2.5rem; margin-bottom: 15px; letter-spacing: 2px;">THE LEGACY</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; font-weight: 100;">
+                    ساختن میراثی که فراتر از زمان حرکت کند.<br>
+                    <strong>Architecting a future that endures.</strong>
+                </p>
+            </div>
         </div>
     </section>
 
+    <section id="p7"><div class="v-content"><a href="mailto:amirsn121@gmail.com" class="btn-gold">START LEGACY</a></div></section>
+
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.3 });
         document.querySelectorAll('section').forEach(s => observer.observe(s));
     </script>
