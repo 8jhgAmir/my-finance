@@ -1,5 +1,5 @@
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Vazirmatn', sans-serif; background: var(--navy); color: white; overflow-x: hidden; }
 
-        /* هدر فوق‌العاده مینیمال */
         header { 
             position: fixed; top: 0; width: 100%; padding: 25px 8%; 
             display: flex; justify-content: space-between; align-items: center; 
@@ -21,7 +20,6 @@
         }
         .logo { color: var(--gold); font-weight: 700; letter-spacing: 4px; font-size: 1rem; text-transform: uppercase; }
 
-        /* ساختار صفحات متحرک */
         section { 
             height: 100vh; width: 100%; position: relative; 
             display: flex; align-items: center; justify-content: center;
@@ -35,22 +33,18 @@
             transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
             z-index: 1;
         }
-        /* افکت زوم ملایم هنگام ورود به صفحه */
         .active .bg-img { transform: scale(1.1); }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); z-index: 2; }
 
-        /* لایه تاریک‌کننده هوشمند */
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 2; }
-
-        /* دکمه نامرئی روی دکمه‌های خود عکس */
+        /* دکمه نامرئی هوشمند - گسترده‌تر برای اطمینان از کلیک */
         .click-layer {
             position: absolute; z-index: 100;
-            width: 280px; height: 90px;
-            bottom: 14%; /* تنظیم دقیق روی دکمه عکس اول */
+            width: 100%; height: 35%; /* ۳۵ درصد پایین صفحه را کاملا کلیک‌خور می‌کند */
+            bottom: 5%; 
             cursor: pointer;
             background: rgba(255,255,255,0);
         }
 
-        /* آدرس عکس‌ها */
         #p1 .bg-img { background-image: url('hero-me.jpg'); }
         #p2 .bg-img { background-image: url('wisdom.jpg'); }
         #p3 .bg-img { background-image: url('protection.jpg'); }
@@ -59,7 +53,6 @@
         #p6 .bg-img { background-image: url('legacy.jpg'); }
         #p7 .bg-img { background-image: url('contact-bg.jpg'); }
 
-        /* استایل صفحه ۵ (Strategic Hub) */
         .strategic-hub {
             position: relative; z-index: 20; width: 100%; max-width: 1000px;
             display: flex; flex-direction: column; align-items: center;
@@ -77,7 +70,6 @@
         .node::after { content: ''; position: absolute; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: 0.5s; box-shadow: 0 0 10px var(--gold); }
         .node:hover::after { width: 100%; }
 
-        /* استایل صفحه ۶ (Legacy Box) */
         .legacy-box {
             position: relative; z-index: 10; background: rgba(197, 160, 89, 0.05);
             backdrop-filter: blur(15px); padding: 40px; border-right: 3px solid var(--gold);
@@ -124,7 +116,7 @@
 
     <section id="p7">
         <div class="bg-img"></div><div class="overlay"></div>
-        <a href="mailto:amirsn121@gmail.com" class="click-layer" style="bottom: 20%; width: 320px;"></a>
+        <a href="mailto:amirsn121@gmail.com" class="click-layer"></a>
     </section>
 
     <script>
